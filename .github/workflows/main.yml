@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unzip project if uploaded as zip
-        run: if [ -f PeopleCounter.zip ]; then unzip -q -o PeopleCounter.zip; fi
+        run: for f in *.zip; do [ -f "$f" ] && unzip -q -o "$f"; done; ls -la
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
